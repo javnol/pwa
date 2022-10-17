@@ -25,7 +25,11 @@ self.addEventListener(
             caches.match(event.request)
             .then(
                 function(respuesta){
-                    if(respuesta){ return respuesta; }
+                    if(respuesta){ 
+                        console.log('La respuesta proviene del cache');
+                        return respuesta; 
+                    }
+                    console.log('La respuesta no proviene del cache');
                     return fetch(event.request);
                 }
             ) 
